@@ -20,16 +20,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-<<<<<<< HEAD
     <mvc:resources mapping="/css/**" location="WEB-INF/css/"/>
     <mvc:resources mapping="/image/**" location="WEB-INF/image/"/>
     <mvc:resources mapping="/js/**" location="WEB-INF/js/"/>
     <mvc:resources mapping="/js/**" location="WEB-INF/js/login/"/>
-=======
-    <!--放行静态资源-->
-    <mvc:resources mapping="/css/**" location="WEB-INF/css/"/>
-    <mvc:resources mapping="/image/**" location="WEB-INF/image/"/>
-    <mvc:resources mapping="/js/**" location="WEB-INF/js/"/>
->>>>>>> 530edbd131b633765dbec7e94d17485e2342217c
+
+
 
 </beans>
