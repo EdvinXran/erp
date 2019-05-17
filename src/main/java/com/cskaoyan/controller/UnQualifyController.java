@@ -4,10 +4,8 @@ import com.cskaoyan.bean.UnqualifyApply;
 import com.cskaoyan.service.UnQualifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +26,6 @@ public class UnQualifyController {
      */
     @RequestMapping("/find")
     public @ResponseBody List<UnqualifyApply> findUnqualify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/unqualify_list.jsp").forward(request,response);
         List<UnqualifyApply> unqualifyList = unQualifyService.findAll();
         return unqualifyList;
     }
