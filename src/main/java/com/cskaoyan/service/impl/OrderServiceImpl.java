@@ -15,9 +15,10 @@ public class OrderServiceImpl implements OrderService {
     OrderMapper mapper;
 
     @Override
-    public List<Order> getOrders(int page, int rows) {
-
-        List<Order> orders = mapper.queryOrders(page, rows);
+    public List<Order> getOrders(String page, String rows) {
+        int rowsInt = Integer.parseInt(rows);
+        int pageInt = (Integer.parseInt(page) - 1) * rowsInt;
+        List<Order> orders = mapper.queryOrders(pageInt, rowsInt);
         return orders;
     }
 }
