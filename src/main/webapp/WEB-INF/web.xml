@@ -15,6 +15,24 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!--<servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.jpg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>-->
+
+
     <!-- 前端控制器 -->
     <servlet>
         <servlet-name>springmvc</servlet-name>
@@ -34,8 +52,6 @@
                 如果配置/*，返回jsp也由springmvc解析，这是不对的。 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-
 
 
     <!-- post乱码处理 -->
