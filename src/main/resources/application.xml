@@ -22,7 +22,7 @@
     <!--dataSource-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://192.168.5.7:3306/jdbc?serverTimezone=GMT"/>
+        <property name="url" value="jdbc:mysql://192.168.5.7:3306/production_ssm?serverTimezone=GMT"/>
         <property name="username" value="root"/>
         <property name="password" value="313170"/>
     </bean>
