@@ -2,6 +2,9 @@ package com.cskaoyan.bean;
 
 import java.util.Date;
 
+/**
+ * 成品计量质检类
+ */
 public class FinalMeasuretCheck {
     private String fMeasureCheckId;
 

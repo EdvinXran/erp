@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface OrderService {
 
-    List<Order> getOrders(int page, int rows);
+    List<Order> getOrders(String page, String rows);
 }

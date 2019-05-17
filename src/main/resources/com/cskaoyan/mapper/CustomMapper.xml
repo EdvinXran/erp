@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cskaoyan.mapper.CustomMapper">
+
+
+    <resultMap id="customMap" type="custom">
+        <result property="customId" column="custom_id"/>
+        <result property="customName" column="custom_name"/>
+        <result property="fullName" column="full_name"/>
+        <result property="address" column="address"/>
+        <result property="email" column="email"/>
+        <result property="ownerName" column="owner_name"/>
+        <result property="ownerTel" column="owner_tel"/>
+        <result property="status" column="status"/>
+        <result property="note" column="note"/>
+    </resultMap>
+    <select id="queryCustom" resultMap="customMap">
+        select
+        custom_id,
+        custom_name,
+        full_name,
+        address,
+        email,
+        owner_name,
+        owner_tel,
+        status,
+        note
+        from custom
+        limit #{page}, #{rows}
+    </select>
+</mapper>
