@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("employee")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
@@ -30,10 +30,14 @@ public class EmployeeController {
         }
         return "";
     }
-    @RequestMapping("find")
+    @RequestMapping("/find")
+    public String find(){
+        return "employee_list";
+    }
+    @RequestMapping("/list")
     @ResponseBody
-    public List<Employee> find(@RequestBody Employee employee){
-        List<Employee>employeeList =employeeService.selectAllEmployee(employee);
+    public List<Employee>employeeList(String page,String rows){
+        List<Employee> employeeList = employeeService.selectAllEmployee();
         return employeeList;
     }
     @RequestMapping("add_judge")

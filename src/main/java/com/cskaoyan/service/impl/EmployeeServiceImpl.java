@@ -22,8 +22,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> selectAllEmployee(Employee employee) {
-        return employeeMapper.selectAllEmployee(employee);
+    public List<Employee> selectAllEmployee() {
+        return employeeMapper.selectAllEmployee();
     }
 
     @Override

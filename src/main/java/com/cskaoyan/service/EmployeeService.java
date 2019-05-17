@@ -8,7 +8,7 @@ import java.util.List;
 public interface EmployeeService {
     int insertEmpl(@Param("employee") Employee employee);
 
-    List<Employee> selectAllEmployee(Employee employee);
+    List<Employee> selectAllEmployee();
 
     boolean selectEmployee(String empId, String empName);
 

@@ -30,7 +30,7 @@
     select <include refid="Base_Column_List" /> from employee where emp_id = #{id} and emp_name = #{name}
   </select>
   <select id="selectAllEmployee" resultType="employee">
-    select <include refid="Base_Column_List" />
+    select <include refid="Base_Column_List" /> from employee
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from employee
