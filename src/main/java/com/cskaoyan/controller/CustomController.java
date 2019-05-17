@@ -1,7 +1,8 @@
 package com.cskaoyan.controller;
 
-import com.cskaoyan.bean.Order;
-import com.cskaoyan.service.OrderService;
+import com.cskaoyan.bean.Custom;
+import com.cskaoyan.service.CustomService;
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,23 +11,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("order")
-public class OrderController {
+@RequestMapping("custom")
+public class CustomController {
 
     @Autowired
-    OrderService orderService;
+    CustomService customService;
 
     @RequestMapping("find")
-    public String getOrders() {
+    public String find() {
 
-        return "order_list";
+        return "custom_list";
     }
 
     @ResponseBody
     @RequestMapping("list")
-    public List<Order> orderList(String page, String rows) {
+    public List<Custom> customList(String page, String rows) {
 
-        List<Order> orders = orderService.getOrders(page, rows);
-        return orders;
+        return customService.queryCustomService(page, rows);
     }
 }
