@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cskaoyan.mapper.OrderMapper">
+
+    <resultMap id="orderMap" type="Order">
+        <result property="orderId" column="order_id"/>
+        <result property="customId" column="o_custom_id"/>
+        <result property="productId" column="o_product_id"/>
+        <result property="orderDate" column="order_date"/>
+        <result property="requestDate" column="request_date"/>
+        <result property="note" column="o_note"/>
+        <result property="quantity" column="quantity"/>
+        <result property="unitPrice" column="unit_price"/>
+        <result property="unit" column="unit"/>
+        <result property="image" column="o_image"/>
+        <result property="file" column="file"/>
+        <result property="status" column="o_status"/>
+        <association property="custom" javaType="custom">
+            <result property="customId" column="custom_id"/>
+            <result property="customName" column="custom_name"/>
+            <result property="fullName" column="full_name"/>
+            <result property="address" column="address"/>
+            <result property="fax" column="fax"/>
+            <result property="email" column="email"/>
+            <result property="ownerName" column="owner_name"/>
+            <result property="ownerTel" column="owner_tel"/>
+            <result property="status" column="c_status"/>
+            <result property="note" column="c_note"/>
+        </association>
+        <association property="product" javaType="product">
+            <result property="productId" column="product_id"/>
+            <result property="productName" column="product_name"/>
+            <result property="productType" column="product_type"/>
+            <result property="image" column="p_image"/>
+            <result property="note" column="p_note"/>
+            <result property="status" column="p_status"/>
+        </association>
+    </resultMap>
+
+    <select id="queryOrders" resultMap="orderMap">
+        select
+        o.order_id,
+        o.custom_id o_custom_id,
+        o.product_id o_product_id,
+        o.order_date,
+        o.request_date,
+        o.note o_note,
+        o.quantity,
+        o.unit_price,
+        o.unit,
+        o.image o_image,
+        o.file,
+        o.status o_status,
+        c.custom_id,
+        c.custom_name,
+        c.full_name,
+        c.address,
+        c.fax,
+        c.email,
+        c.owner_name,
+        c.owner_tel,
+        c.status c_status,
+        c.note c_note,
+        p.product_id,
+        p.product_name,
+        p.product_type,
+        p.image p_image,
+        p.note p_note,
+        p.status p_status
+        from c_order o left join custom c on o.custom_id = c.custom_id
+        left join product p on o.product_id = p.product_id
+        limit #{page}, #{rows};
+    </select>
+</mapper>
