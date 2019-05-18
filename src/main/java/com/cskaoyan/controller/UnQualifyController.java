@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,19 +24,11 @@ public class UnQualifyController {
 
     /**
      * 不合格品申请查询分发
-
+     */
     @RequestMapping("/find")
-    @ResponseBody
-    String qualityManage(@RequestParam String _){
-        String view = null;
-        switch (_) {
-            case "1558148738957":
-                view = "forword:/unqualify/list";
-                break;
-        }
-
-        return view;
-    }*/
+    String qualityManage(){
+        return "unqualify_list";
+    }
     /**
      * 分页查询不合格申请记录
      *
@@ -45,11 +36,9 @@ public class UnQualifyController {
      */
     @RequestMapping("/list")
     public @ResponseBody
-    QualityManageVo findPartUnqualify(HttpServletRequest request, HttpServletResponse response,
-                                  @RequestParam int page, @RequestParam int rows)
-            throws ServletException, IOException {
+    QualityManageVo findPartUnqualify(@RequestParam int page, @RequestParam int rows) {
         QualityManageVo qualityManageVo = new QualityManageVo();
-        List<UnqualifyApply> unqualifyList = unQualifyService.findAll(page,rows);
+        List<UnqualifyApply> unqualifyList = unQualifyService.findAll();
         qualityManageVo.setRows(unqualifyList);
         qualityManageVo.setTotal(unqualifyList == null ? 0 : unqualifyList.size());
         System.out.println(qualityManageVo);

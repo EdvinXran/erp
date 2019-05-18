@@ -73,11 +73,6 @@
     unqualify_apply_id, product_id, unqualify_item, unqualify_count, assembly_date, emp_id, 
     apply_date, note
   </sql>
-  <!--<select id="findAll" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from unqualify_apply
-  </select>-->
   <select id="selectByExample" parameterType="com.cskaoyan.bean.UnqualifyApplyExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
