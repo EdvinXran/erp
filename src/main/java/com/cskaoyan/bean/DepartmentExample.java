@@ -3,14 +3,14 @@ package com.cskaoyan.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeoartmentExample {
+public class DepartmentExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public DeoartmentExample() {
+    public DepartmentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
