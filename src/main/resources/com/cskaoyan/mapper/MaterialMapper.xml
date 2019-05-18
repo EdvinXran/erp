@@ -181,7 +181,7 @@
     where material_id = #{materialId,jdbcType=VARCHAR}
   </update>
 
-  <select id="queryMaterial" resultMap="materialMap">
+  <select id="queryMaterial" resultType="material">
     select material_id,material_type,status,remaining,note from material
   </select>
 </mapper>
