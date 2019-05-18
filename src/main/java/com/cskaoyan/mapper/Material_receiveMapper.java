@@ -2,9 +2,8 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.Material_receive;
 import com.cskaoyan.bean.Material_receiveExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface Material_receiveMapper {
     long countByExample(Material_receiveExample example);

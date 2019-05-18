@@ -2,9 +2,8 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.Material_consume;
 import com.cskaoyan.bean.Material_consumeExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface Material_consumeMapper {
     long countByExample(Material_consumeExample example);

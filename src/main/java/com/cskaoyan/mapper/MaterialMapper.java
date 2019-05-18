@@ -2,8 +2,6 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.Material;
 
-import java.util.List;
-
 public interface MaterialMapper {
     int deleteByPrimaryKey(String materialId);
 
@@ -16,6 +14,4 @@ public interface MaterialMapper {
     int updateByPrimaryKeySelective(Material record);
 
     int updateByPrimaryKey(Material record);
-
-    List<Material> queryMaterial();
 }
