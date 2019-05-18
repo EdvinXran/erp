@@ -7,7 +7,7 @@ public class QueryVo<T> {
 
     private int total;
 
-    private List<T> tList;
+    private List<T> rows;
 
     public int getTotal() {
         return total;
@@ -17,11 +17,11 @@ public class QueryVo<T> {
         this.total = total;
     }
 
-    public List<T> gettList() {
-        return tList;
+    public List<T> getRows() {
+        return rows;
     }
 
-    public void settList(List<T> tList) {
-        this.tList = tList;
+    public void setRows(List<T> rows) {
+        this.rows = rows;
     }
 }

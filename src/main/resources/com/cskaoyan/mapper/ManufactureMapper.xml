@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cskaoyan.mapper.ManufactureMapper">
+
+
+    <resultMap id="manufactureMap" type="manufacture">
+        <result property="manufactureSn" column="manufacture_sn"/>
+        <result property="launchQuantity" column="launch_quantity"/>
+        <result property="beginDate" column="begin_date"/>
+        <result property="endDate" column="end_date"/>
+        <association property="cOrder" javaType="order">
+            <result property="orderId" column="order_id"/>
+        </association>
+        <association property="technology" javaType="technology">
+            <result property="technologyId" column="technology_id"/>
+            <result property="technologyName" column="technology_name"/>
+        </association>
+     </resultMap>
+
+    <select id="queryManufacture" resultMap="manufactureMap">
+        select
+        manufacture_sn,
+        m.order_id m_order_id,
+        m.technology_id m_technology_id,
+        launch_quantity,
+        begin_date,
+        end_date,
+        o.order_id,
+        t.technology_id,
+        t.technology_name
+        from manufacture m
+        left join c_order o on m.order_id = o.order_id
+        left join technology t on m.technology_id = t.technology_id
+        limit #{page}, #{rows}
+    </select>
+
+    <select id="queryManufactureNum" resultType="_int">
+        select
+        count(1)
+        from manufacture
+    </select>
+</mapper>

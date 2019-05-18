@@ -17,10 +17,11 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public QueryVo<Work> queryWork(int page, int rows) {
-        List<Work> works = workMapper.queryWork();
+        int total = workMapper.queryWorkNum();
+        List<Work> works = workMapper.queryWork((page - 1) * rows, rows);
         QueryVo<Work> workQueryVo = new QueryVo<>();
-        workQueryVo.setTotal(works.size());
-        workQueryVo.settList(works);
+        workQueryVo.setTotal(total);
+        workQueryVo.setRows(works);
         return workQueryVo;
     }
 }

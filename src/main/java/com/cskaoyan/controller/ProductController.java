@@ -1,6 +1,7 @@
 package com.cskaoyan.controller;
 
 import com.cskaoyan.bean.Product;
+import com.cskaoyan.bean.QueryVo;
 import com.cskaoyan.service.ProductService;
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping("list")
-    public Page<Product> list(int page, int rows) {
+    public QueryVo<Product> list(int page, int rows) {
 
-        Page<Product> products = productService.queryProduct(page, rows);
+        QueryVo<Product> products = productService.queryProduct(page, rows);
         return products;
 
     }

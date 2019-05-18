@@ -1,6 +1,7 @@
 package com.cskaoyan.service.impl;
 
 import com.cskaoyan.bean.Custom;
+import com.cskaoyan.bean.QueryVo;
 import com.cskaoyan.mapper.CustomMapper;
 import com.cskaoyan.service.CustomService;
 import com.github.pagehelper.Page;
@@ -17,12 +18,12 @@ public class CustomServiceImpl implements CustomService {
     CustomMapper customMapper;
 
     @Override
-    public Page<Custom> queryCustom(int page, int rows) {
-
-        PageHelper.startPage(page, rows);
-        List<Custom> customs = customMapper.queryCustom();
-        Page<Custom> customsPage = (Page<Custom>) customs;
-
-        return customsPage;
+    public QueryVo<Custom> queryCustom(int page, int rows) {
+        List<Custom> customs = customMapper.queryCustom((page - 1) * rows, rows);
+        int total = customMapper.queryCustomNum();
+        QueryVo<Custom> customQueryVo = new QueryVo<>();
+        customQueryVo.setTotal(total);
+        customQueryVo.setRows(customs);
+        return customQueryVo;
     }
 }
