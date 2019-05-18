@@ -71,7 +71,6 @@
         p.note p_note,
         p.status p_status
         from c_order o left join custom c on o.custom_id = c.custom_id
-        left join product p on o.product_id = p.product_id
-        limit #{page}, #{rows};
+        left join product p on o.product_id = p.product_id;
     </select>
 </mapper>
