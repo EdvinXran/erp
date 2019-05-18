@@ -2,9 +2,8 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.ProcessMeasureCheck;
 import com.cskaoyan.bean.ProcessMeasureCheckExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ProcessMeasureCheckMapper {
     long countByExample(ProcessMeasureCheckExample example);
