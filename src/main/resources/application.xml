@@ -24,6 +24,7 @@
                     <property name="properties">
                         <value>
                             dialect=mysql
+                            reasonable=true
                         </value>
                     </property>
                 </bean>
