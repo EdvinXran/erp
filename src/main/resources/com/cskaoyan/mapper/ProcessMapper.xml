@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD:src/main/resources/com/cskaoyan/mapper/ProcessMapper.xml
-<mapper namespace="com.cskaoyan.mapper.processMapper">
-=======
+
 <mapper namespace="com.cskaoyan.mapper.ProcessMapper">
->>>>>>> ebd9d27557940f27823bb81a51f7e66a0c41cc36:src/main/resources/com/cskaoyan/mapper/ProcessMapper.xml
+
   <resultMap id="BaseResultMap" type="com.cskaoyan.bean.Process">
     <id column="process_id" jdbcType="VARCHAR" property="processId" />
     <result column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
