@@ -2,7 +2,7 @@ package com.cskaoyan.service.impl;
 
 import com.cskaoyan.bean.UnqualifyApply;
 import com.cskaoyan.bean.UnqualifyApplyExample;
-import com.cskaoyan.mapper.UnQualifyApplyMapper;
+import com.cskaoyan.mapper.UnqualifyApplyMapper;
 import com.cskaoyan.service.UnQualifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 public class UnQualifyServiceImpl implements UnQualifyService {
 
     @Autowired
-    private UnQualifyApplyMapper unqualifyApplyMapper;
+    private UnqualifyApplyMapper unqualifyApplyMapper;
 
     /**
      * 显示不合格申请记录
