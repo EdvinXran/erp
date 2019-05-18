@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface DeviceService {
 
-    List<Device> QueryAllDevice();
-    List<Device_Type> QueryAllDevice_Type();
-    List<Device_Check> QueryAllDevice_Check();
-    List<Device_Fault> QueryAllDevice_Fault();
-    List<Device_Maintain> QueryAllDevice_MainTain();
+    List<Device> queryAllDevice();
+    List<Device_Type> queryAllDevice_Type();
+    List<Device_Check> queryAllDevice_Check();
+    List<Device_Fault> queryAllDevice_Fault();
+    List<Device_Maintain> queryAllDevice_MainTain();
 
 }
