@@ -1,17 +1,30 @@
 package com.cskaoyan.controller;
 
+import com.cskaoyan.bean.Device;
+import com.cskaoyan.service.DeviceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import java.util.List;
 
-@RestController
-@RequestMapping("/device")
+@Controller
 public class DeviceController {
-     @RequestMapping(value = "/deviceList")
-     public ModelAndView QueryAllDevice(){
-         return null;
+     @Autowired
+     DeviceService deviceService;
+     @RequestMapping(value = "/device/deviceList")
+     public String deviceList(){
+         return "deviceList";
      }
+    @RequestMapping(value = "/deviceList/list")
+    @ResponseBody
+    public List<Device> queryAllDevices(String page,String rows){
+        return deviceService.QueryAllDevice();
+    }
+
      @RequestMapping(value="/deviceType")
      public ModelAndView QueryAllDevice_Type(){
          return null;

@@ -2,6 +2,9 @@ package com.cskaoyan.bean;
 
 import java.util.Date;
 
+/**
+ * 不合格产品类
+ */
 public class UnqualifyApply {
     private String unqualifyApplyId;
 

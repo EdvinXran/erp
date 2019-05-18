@@ -15,6 +15,7 @@ public class DeviceServiceImpl implements DeviceService {
     @Override
     public List<Device> QueryAllDevice() {
         DeviceExample deviceExample = new DeviceExample();
+        deviceExample.clear();
         List<Device> devices = deviceMapper.selectByExample(deviceExample);
         return devices;
     }
