@@ -2,9 +2,8 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.FinalCountCheck;
 import com.cskaoyan.bean.FinalCountCheckExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FinalCountCheckMapper {
     long countByExample(FinalCountCheckExample example);

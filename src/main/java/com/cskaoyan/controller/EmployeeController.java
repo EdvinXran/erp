@@ -1,8 +1,8 @@
 package com.cskaoyan.controller;
 
 
-import com.cskaoyan.bean.DeoartmentExample;
 import com.cskaoyan.bean.Employee;
+import com.cskaoyan.bean.QueryVo;
 import com.cskaoyan.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,40 +14,45 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/employee")
+@RequestMapping("employee")
 public class EmployeeController {
 
     @Autowired
     EmployeeService employeeService;
 
 
-    @RequestMapping("insert")
-    @ResponseBody
-    public String add(@RequestBody Employee employee){
-        int i = employeeService.insertEmpl(employee);
-        if(i==1){
-            return "";
-        }
-        return "";
-    }
     @RequestMapping("find")
-    public String find(){
+    public String getOrders() {
+
         return "employee_list";
     }
-    @RequestMapping("list")
+
     @ResponseBody
-    public List<Employee>employeeList(String page,String rows){
-        List<Employee> employeeList = employeeService.selectAllEmployee();
-        return employeeList;
+    @RequestMapping("list")
+    public QueryVo employeeList() {
+        List<Employee>employeeList= employeeService.selectAllEmployee();
+        QueryVo queryVo = new QueryVo();
+        queryVo.setRows(employeeList);
+        queryVo.setTotal(employeeList.size());
+        return queryVo;
     }
+
     @RequestMapping("add_judge")
+    public String add(){
+        return "employee_add";
+    }
+    @RequestMapping("add")
     @ResponseBody
     public Employee add_judge(@RequestBody Employee employee){
         boolean i = employeeService.selectEmployee(employee.getEmpId(),employee.getEmpName());
-        if(i){
-            return employee;
+        if(!i){
+
         }
-        return  employee;
+        return employee;
+    }
+    @RequestMapping("edit")
+    public String edit(){
+        return "employee_edit";
     }
     @RequestMapping("edit_judge")
     @ResponseBody
@@ -58,6 +63,8 @@ public class EmployeeController {
         }
         return employee;
     }
+//    @RequestMapping("delete_batch")
+//    public
     @RequestMapping("delete_judge")
     public String deleted(Model model,Employee employee){
         employeeService.deletedEmployeeById(employee.getEmpId());

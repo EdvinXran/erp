@@ -267,7 +267,7 @@ function  openCountP2P(index){
 	$("#p2pCountInfo").dialog({
 		onOpen :function(){
 			
-			$.get("process/get/"+row.processId,'',function(data){
+			$.get("Process/get/"+row.processId,'',function(data){
 	    		//回显数据
 	    		$("#p2pCountEditForm").form("load", data);
 	    	});
@@ -286,7 +286,7 @@ function submitp2pCountEditForm(){
 				return ;
 			}
 			//此处写工序信息
-			$.post("process/update_all",$("#p2pCountEditForm").serialize(), function(data){
+			$.post("Process/update_all",$("#p2pCountEditForm").serialize(), function(data){
 				if(data.status == 200){
 					$.messager.alert('提示','修改工序成功!','info',function(){
 						$("#p2pCountInfo").dialog("close");

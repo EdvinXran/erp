@@ -2,12 +2,7 @@ package com.cskaoyan.bean;
 
 import java.util.Date;
 
-/**
- * Created by VAP
- * Date 2019/5/17  Time 15:48
- */
 public class Material_consume {
-
     private String consumeId;
 
     private String workId;
@@ -24,29 +19,12 @@ public class Material_consume {
 
     private String note;
 
-    public Material_consume() {
-    }
-
-    @Override
-    public String toString() {
-        return "Material_consume{" +
-                "consumeId='" + consumeId + '\'' +
-                ", workId='" + workId + '\'' +
-                ", materialId='" + materialId + '\'' +
-                ", consumeAmount=" + consumeAmount +
-                ", consumeDate=" + consumeDate +
-                ", sender='" + sender + '\'' +
-                ", receiver='" + receiver + '\'' +
-                ", note='" + note + '\'' +
-                '}';
-    }
-
     public String getConsumeId() {
         return consumeId;
     }
 
     public void setConsumeId(String consumeId) {
-        this.consumeId = consumeId;
+        this.consumeId = consumeId == null ? null : consumeId.trim();
     }
 
     public String getWorkId() {
@@ -54,7 +32,7 @@ public class Material_consume {
     }
 
     public void setWorkId(String workId) {
-        this.workId = workId;
+        this.workId = workId == null ? null : workId.trim();
     }
 
     public String getMaterialId() {
@@ -62,7 +40,7 @@ public class Material_consume {
     }
 
     public void setMaterialId(String materialId) {
-        this.materialId = materialId;
+        this.materialId = materialId == null ? null : materialId.trim();
     }
 
     public Integer getConsumeAmount() {
@@ -86,7 +64,7 @@ public class Material_consume {
     }
 
     public void setSender(String sender) {
-        this.sender = sender;
+        this.sender = sender == null ? null : sender.trim();
     }
 
     public String getReceiver() {
@@ -94,7 +72,7 @@ public class Material_consume {
     }
 
     public void setReceiver(String receiver) {
-        this.receiver = receiver;
+        this.receiver = receiver == null ? null : receiver.trim();
     }
 
     public String getNote() {
@@ -102,17 +80,6 @@ public class Material_consume {
     }
 
     public void setNote(String note) {
-        this.note = note;
-    }
-
-    public Material_consume(String consumeId, String workId, String materialId, Integer consumeAmount, Date consumeDate, String sender, String receiver, String note) {
-        this.consumeId = consumeId;
-        this.workId = workId;
-        this.materialId = materialId;
-        this.consumeAmount = consumeAmount;
-        this.consumeDate = consumeDate;
-        this.sender = sender;
-        this.receiver = receiver;
-        this.note = note;
+        this.note = note == null ? null : note.trim();
     }
 }

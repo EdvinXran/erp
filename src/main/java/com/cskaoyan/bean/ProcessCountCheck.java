@@ -3,9 +3,6 @@ package com.cskaoyan.bean;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * 工序计数质检类
- */
 public class ProcessCountCheck {
     private String pCountCheckId;
 

@@ -2,3 +2,9 @@
 5.27 赵友嘉 环境搭建完毕 第一个子模块查询功能还没能跑起来
 5.27 彭顺 订单管理，客户管理的查询数据显示
 5.17 设备种类的查询
+
+5.18 高云鹏
+    Material            service增 删 改 查 【ok】   serviceImpl增 删 改 查 【ok】    Controller增 删 改 查 【有问题没解决】
+    【以下未完成】
+    Material_receiver   service增 删 改 查    serviceImpl增 删 改 查     Controller增 删 改 查
+    Material_consume    service增 删 改 查    serviceImpl增 删 改 查     Controller增 删 改 查

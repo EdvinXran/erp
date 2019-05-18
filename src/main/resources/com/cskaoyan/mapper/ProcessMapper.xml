@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cskaoyan.mapper.DeoartmentMapper">
-  <resultMap id="BaseResultMap" type="com.cskaoyan.bean.Department">
-    <id column="department_id" jdbcType="VARCHAR" property="departmentId" />
-    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
-    <result column="note" jdbcType="VARCHAR" property="note" />
+
+<mapper namespace="com.cskaoyan.mapper.ProcessMapper">
+
+  <resultMap id="BaseResultMap" type="com.cskaoyan.bean.Process">
+    <id column="process_id" jdbcType="VARCHAR" property="processId" />
+    <result column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="quota" jdbcType="INTEGER" property="quota" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    department_id, department_name, note
+    process_id, technology_plan_id, sequence, quota
   </sql>
-  <select id="selectByExample" parameterType="com.cskaoyan.bean.DeoartmentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cskaoyan.bean.ProcessExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from department
+    from process
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +87,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from department
-    where department_id = #{departmentId,jdbcType=VARCHAR}
+    from process
+    where process_id = #{processId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from department
-    where department_id = #{departmentId,jdbcType=VARCHAR}
+    delete from process
+    where process_id = #{processId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.cskaoyan.bean.DeoartmentExample">
-    delete from department
+  <delete id="deleteByExample" parameterType="com.cskaoyan.bean.ProcessExample">
+    delete from process
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.cskaoyan.bean.Department">
-    insert into department (department_id, department_name, note
-      )
-    values (#{departmentId,jdbcType=VARCHAR}, #{departmentName,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.cskaoyan.bean.Process">
+    insert into process (process_id, technology_plan_id, sequence, 
+      quota)
+    values (#{processId,jdbcType=VARCHAR}, #{technologyPlanId,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, 
+      #{quota,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.cskaoyan.bean.Department">
-    insert into department
+  <insert id="insertSelective" parameterType="com.cskaoyan.bean.Process">
+    insert into process
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="departmentId != null">
-        department_id,
+      <if test="processId != null">
+        process_id,
       </if>
-      <if test="departmentName != null">
-        department_name,
+      <if test="technologyPlanId != null">
+        technology_plan_id,
       </if>
-      <if test="note != null">
-        note,
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="quota != null">
+        quota,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="departmentId != null">
-        #{departmentId,jdbcType=VARCHAR},
+      <if test="processId != null">
+        #{processId,jdbcType=VARCHAR},
       </if>
-      <if test="departmentName != null">
-        #{departmentName,jdbcType=VARCHAR},
+      <if test="technologyPlanId != null">
+        #{technologyPlanId,jdbcType=VARCHAR},
       </if>
-      <if test="note != null">
-        #{note,jdbcType=VARCHAR},
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="quota != null">
+        #{quota,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.cskaoyan.bean.DeoartmentExample" resultType="java.lang.Long">
-    select count(*) from department
+  <select id="countByExample" parameterType="com.cskaoyan.bean.ProcessExample" resultType="java.lang.Long">
+    select count(*) from process
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update department
+    update process
     <set>
-      <if test="record.departmentId != null">
-        department_id = #{record.departmentId,jdbcType=VARCHAR},
+      <if test="record.processId != null">
+        process_id = #{record.processId,jdbcType=VARCHAR},
       </if>
-      <if test="record.departmentName != null">
-        department_name = #{record.departmentName,jdbcType=VARCHAR},
+      <if test="record.technologyPlanId != null">
+        technology_plan_id = #{record.technologyPlanId,jdbcType=VARCHAR},
       </if>
-      <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+      <if test="record.sequence != null">
+        sequence = #{record.sequence,jdbcType=INTEGER},
+      </if>
+      <if test="record.quota != null">
+        quota = #{record.quota,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -152,30 +164,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update department
-    set department_id = #{record.departmentId,jdbcType=VARCHAR},
-      department_name = #{record.departmentName,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR}
+    update process
+    set process_id = #{record.processId,jdbcType=VARCHAR},
+      technology_plan_id = #{record.technologyPlanId,jdbcType=VARCHAR},
+      sequence = #{record.sequence,jdbcType=INTEGER},
+      quota = #{record.quota,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cskaoyan.bean.Department">
-    update department
+  <update id="updateByPrimaryKeySelective" parameterType="com.cskaoyan.bean.Process">
+    update process
     <set>
-      <if test="departmentName != null">
-        department_name = #{departmentName,jdbcType=VARCHAR},
+      <if test="technologyPlanId != null">
+        technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR},
       </if>
-      <if test="note != null">
-        note = #{note,jdbcType=VARCHAR},
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="quota != null">
+        quota = #{quota,jdbcType=INTEGER},
       </if>
     </set>
-    where department_id = #{departmentId,jdbcType=VARCHAR}
+    where process_id = #{processId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cskaoyan.bean.Department">
-    update department
-    set department_name = #{departmentName,jdbcType=VARCHAR},
-      note = #{note,jdbcType=VARCHAR}
-    where department_id = #{departmentId,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.cskaoyan.bean.Process">
+    update process
+    set technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR},
+      sequence = #{sequence,jdbcType=INTEGER},
+      quota = #{quota,jdbcType=INTEGER}
+    where process_id = #{processId,jdbcType=VARCHAR}
   </update>
 </mapper>

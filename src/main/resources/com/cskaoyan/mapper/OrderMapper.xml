@@ -72,5 +72,11 @@
         p.status p_status
         from c_order o left join custom c on o.custom_id = c.custom_id
         left join product p on o.product_id = p.product_id
+        limit #{page}, #{rows}
+    </select>
+
+    <select id="queryOrdersNum" resultType="_int">
+        select count(1)
+        from c_order
     </select>
 </mapper>

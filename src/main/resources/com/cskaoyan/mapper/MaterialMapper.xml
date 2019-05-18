@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cskaoyan.mapper.processMapper">
-  <resultMap id="BaseResultMap" type="com.cskaoyan.bean.process">
-    <id column="process_id" jdbcType="VARCHAR" property="processId" />
-    <result column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
-    <result column="sequence" jdbcType="INTEGER" property="sequence" />
-    <result column="quota" jdbcType="INTEGER" property="quota" />
+<mapper namespace="com.cskaoyan.mapper.MaterialMapper">
+  <resultMap id="BaseResultMap" type="com.cskaoyan.bean.Material">
+    <id column="material_id" jdbcType="VARCHAR" property="materialId" />
+    <result column="material_type" jdbcType="VARCHAR" property="materialType" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="remaining" jdbcType="INTEGER" property="remaining" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    process_id, technology_plan_id, sequence, quota
+    material_id, material_type, status, remaining, note
   </sql>
-  <select id="selectByExample" parameterType="com.cskaoyan.bean.processExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cskaoyan.bean.MaterialExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from process
+    from material
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +86,85 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from process
-    where process_id = #{processId,jdbcType=VARCHAR}
+    from material
+    where material_id = #{materialId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from process
-    where process_id = #{processId,jdbcType=VARCHAR}
+    delete from material
+    where material_id = #{materialId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.cskaoyan.bean.processExample">
-    delete from process
+  <delete id="deleteByExample" parameterType="com.cskaoyan.bean.MaterialExample">
+    delete from material
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.cskaoyan.bean.process">
-    insert into process (process_id, technology_plan_id, sequence, 
-      quota)
-    values (#{processId,jdbcType=VARCHAR}, #{technologyPlanId,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, 
-      #{quota,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.cskaoyan.bean.Material">
+    insert into material (material_id, material_type, status, 
+      remaining, note)
+    values (#{materialId,jdbcType=VARCHAR}, #{materialType,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{remaining,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.cskaoyan.bean.process">
-    insert into process
+  <insert id="insertSelective" parameterType="com.cskaoyan.bean.Material">
+    insert into material
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="processId != null">
-        process_id,
+      <if test="materialId != null">
+        material_id,
       </if>
-      <if test="technologyPlanId != null">
-        technology_plan_id,
+      <if test="materialType != null">
+        material_type,
       </if>
-      <if test="sequence != null">
-        sequence,
+      <if test="status != null">
+        status,
       </if>
-      <if test="quota != null">
-        quota,
+      <if test="remaining != null">
+        remaining,
+      </if>
+      <if test="note != null">
+        note,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="processId != null">
-        #{processId,jdbcType=VARCHAR},
+      <if test="materialId != null">
+        #{materialId,jdbcType=VARCHAR},
       </if>
-      <if test="technologyPlanId != null">
-        #{technologyPlanId,jdbcType=VARCHAR},
+      <if test="materialType != null">
+        #{materialType,jdbcType=VARCHAR},
       </if>
-      <if test="sequence != null">
-        #{sequence,jdbcType=INTEGER},
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
       </if>
-      <if test="quota != null">
-        #{quota,jdbcType=INTEGER},
+      <if test="remaining != null">
+        #{remaining,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.cskaoyan.bean.processExample" resultType="java.lang.Long">
-    select count(*) from process
+  <select id="countByExample" parameterType="com.cskaoyan.bean.MaterialExample" resultType="java.lang.Long">
+    select count(*) from material
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update process
+    update material
     <set>
-      <if test="record.processId != null">
-        process_id = #{record.processId,jdbcType=VARCHAR},
+      <if test="record.materialId != null">
+        material_id = #{record.materialId,jdbcType=VARCHAR},
       </if>
-      <if test="record.technologyPlanId != null">
-        technology_plan_id = #{record.technologyPlanId,jdbcType=VARCHAR},
+      <if test="record.materialType != null">
+        material_type = #{record.materialType,jdbcType=VARCHAR},
       </if>
-      <if test="record.sequence != null">
-        sequence = #{record.sequence,jdbcType=INTEGER},
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
       </if>
-      <if test="record.quota != null">
-        quota = #{record.quota,jdbcType=INTEGER},
+      <if test="record.remaining != null">
+        remaining = #{record.remaining,jdbcType=INTEGER},
+      </if>
+      <if test="record.note != null">
+        note = #{record.note,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -162,35 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update process
-    set process_id = #{record.processId,jdbcType=VARCHAR},
-      technology_plan_id = #{record.technologyPlanId,jdbcType=VARCHAR},
-      sequence = #{record.sequence,jdbcType=INTEGER},
-      quota = #{record.quota,jdbcType=INTEGER}
+    update material
+    set material_id = #{record.materialId,jdbcType=VARCHAR},
+      material_type = #{record.materialType,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      remaining = #{record.remaining,jdbcType=INTEGER},
+      note = #{record.note,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cskaoyan.bean.process">
-    update process
+  <update id="updateByPrimaryKeySelective" parameterType="com.cskaoyan.bean.Material">
+    update material
     <set>
-      <if test="technologyPlanId != null">
-        technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR},
+      <if test="materialType != null">
+        material_type = #{materialType,jdbcType=VARCHAR},
       </if>
-      <if test="sequence != null">
-        sequence = #{sequence,jdbcType=INTEGER},
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="quota != null">
-        quota = #{quota,jdbcType=INTEGER},
+      <if test="remaining != null">
+        remaining = #{remaining,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
       </if>
     </set>
-    where process_id = #{processId,jdbcType=VARCHAR}
+    where material_id = #{materialId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cskaoyan.bean.process">
-    update process
-    set technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR},
-      sequence = #{sequence,jdbcType=INTEGER},
-      quota = #{quota,jdbcType=INTEGER}
-    where process_id = #{processId,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.cskaoyan.bean.Material">
+    update material
+    set material_type = #{materialType,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      remaining = #{remaining,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where material_id = #{materialId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -39,7 +39,7 @@
 <script type="text/javascript">
 	
 	function submitProcessEditForm(){
-		$.get("process/edit_judge",'',function(data){
+		$.get("Process/edit_judge",'',function(data){
     		/* if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{ */
@@ -48,7 +48,7 @@
     				return ;
     			}
     			
-    			$.post("process/update_all",$("#processEditForm").serialize(), function(data){
+    			$.post("Process/update_all",$("#processEditForm").serialize(), function(data){
     				if(data.status == 200){
     					$.messager.alert('提示','修改工序成功!','info',function(){
     						$("#processEditWindow").window('close');

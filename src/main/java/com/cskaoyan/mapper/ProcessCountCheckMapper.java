@@ -2,9 +2,8 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.ProcessCountCheck;
 import com.cskaoyan.bean.ProcessCountCheckExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface ProcessCountCheckMapper {
     long countByExample(ProcessCountCheckExample example);

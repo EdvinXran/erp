@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cskaoyan.mapper.WorkMapper">
+
+    <resultMap id="myWorkMap" type="work">
+        <result property="workId" column="work_id"/>
+        <result property="processNumber" column="process_number"/>
+        <result property="productId" column="w_product_id"/>
+        <result property="deviceId" column="w_device_id"/>
+        <result property="rating" column="rating"/>
+        <result property="processId" column="w_process_id"/>
+        <association property="product" javaType="product">
+            <result property="productName" column="product_name"/>
+            <result property="productId" column="product_id"/>
+        </association>
+        <association property="process" javaType="process">
+            <result property="processId" column="process_id"/>
+        </association>
+        <association property="device" javaType="device">
+            <result property="deviceName" column="device_name"/>
+            <result property="deviceId" column="device_id"/>
+        </association>
+    </resultMap>
+
+    <select id="queryWork" resultMap="myWorkMap">
+        select
+        work_id,
+        process_number,
+        work.product_id w_product_id,
+        work.process_id w_process_id,
+        work.device_id w_device_id,
+        rating,
+        product.product_name,
+        product.product_id,
+        device.device_name,
+        device.device_id,
+        process.process_id
+        from work
+        left join product on work.product_id = product.product_id
+        left join process on work.process_id = process.process_id
+        left join device on work.device_id = device.device_id
+        limit #{page}, #{rows}
+    </select>
+
+    <select id="queryWorkNum" resultType="_int">
+        select
+        count(1)
+        from work
+    </select>
+</mapper>
