@@ -2,6 +2,7 @@ package com.cskaoyan.controller;
 
 import com.cskaoyan.bean.Custom;
 import com.cskaoyan.service.CustomService;
+import com.github.pagehelper.Page;
 import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,8 +26,10 @@ public class CustomController {
 
     @ResponseBody
     @RequestMapping("list")
-    public List<Custom> customList(String page, String rows) {
+    public Page<Custom> customList(int page, int rows) {
 
-        return customService.queryCustomService(page, rows);
+        Page<Custom> customs = customService.queryCustom(page, rows);
+
+        return customs;
     }
 }

@@ -1,6 +1,6 @@
 package com.cskaoyan.mapper;
 
-import com.cskaoyan.bean.Deoartment;
+import com.cskaoyan.bean.Department;
 import com.cskaoyan.bean.DeoartmentExample;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,19 +13,19 @@ public interface DeoartmentMapper {
 
     int deleteByPrimaryKey(String departmentId);
 
-    int insert(Deoartment record);
+    int insert(Department record);
 
-    int insertSelective(Deoartment record);
+    int insertSelective(Department record);
 
-    List<Deoartment> selectByExample(DeoartmentExample example);
+    List<Department> selectByExample(DeoartmentExample example);
 
-    Deoartment selectByPrimaryKey(String departmentId);
+    Department selectByPrimaryKey(String departmentId);
 
-    int updateByExampleSelective(@Param("record") Deoartment record, @Param("example") DeoartmentExample example);
+    int updateByExampleSelective(@Param("record") Department record, @Param("example") DeoartmentExample example);
 
-    int updateByExample(@Param("record") Deoartment record, @Param("example") DeoartmentExample example);
+    int updateByExample(@Param("record") Department record, @Param("example") DeoartmentExample example);
 
-    int updateByPrimaryKeySelective(Deoartment record);
+    int updateByPrimaryKeySelective(Department record);
 
-    int updateByPrimaryKey(Deoartment record);
+    int updateByPrimaryKey(Department record);
 }
