@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <link href="js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
@@ -285,7 +284,6 @@ var empDepartmentEditor;
     function employee_reload(){
     	$("#employeeList").datagrid("reload");
     }
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <link href="js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
@@ -572,5 +570,4 @@ var empDepartmentEditor;
     function employee_reload(){
     	$("#employeeList").datagrid("reload");
     }
->>>>>>> ef4136fd2a7465a1a5188645db1ac136dcadf8e3
 </script>

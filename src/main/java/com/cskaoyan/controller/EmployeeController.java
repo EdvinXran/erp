@@ -30,11 +30,11 @@ public class EmployeeController {
         }
         return "";
     }
-    @RequestMapping("/find")
+    @RequestMapping("find")
     public String find(){
         return "employee_list";
     }
-    @RequestMapping("/list")
+    @RequestMapping("list")
     @ResponseBody
     public List<Employee>employeeList(String page,String rows){
         List<Employee> employeeList = employeeService.selectAllEmployee();
