@@ -36,7 +36,7 @@
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/production_ssm?serverTimezone=GMT"/>
         <property name="username" value="root"/>
-        <property name="password" value="123456"/>
+        <property name="password" value="313170"/>
     </bean>
 
     <!--mapper扫描包-->
