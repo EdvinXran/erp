@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD:src/main/resources/com/cskaoyan/mapper/ProcessMapper.xml
 <mapper namespace="com.cskaoyan.mapper.processMapper">
+=======
+<mapper namespace="com.cskaoyan.mapper.ProcessMapper">
+>>>>>>> ebd9d27557940f27823bb81a51f7e66a0c41cc36:src/main/resources/com/cskaoyan/mapper/ProcessMapper.xml
   <resultMap id="BaseResultMap" type="com.cskaoyan.bean.Process">
     <id column="process_id" jdbcType="VARCHAR" property="processId" />
     <result column="technology_plan_id" jdbcType="VARCHAR" property="technologyPlanId" />
@@ -68,7 +72,7 @@
   <sql id="Base_Column_List">
     process_id, technology_plan_id, sequence, quota
   </sql>
-  <select id="selectByExample" parameterType="com.cskaoyan.bean.processExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cskaoyan.bean.ProcessExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,7 +96,7 @@
     delete from process
     where process_id = #{processId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.cskaoyan.bean.processExample">
+  <delete id="deleteByExample" parameterType="com.cskaoyan.bean.ProcessExample">
     delete from process
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -135,7 +139,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.cskaoyan.bean.processExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.cskaoyan.bean.ProcessExample" resultType="java.lang.Long">
     select count(*) from process
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
