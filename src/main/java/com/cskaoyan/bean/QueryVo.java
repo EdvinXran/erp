@@ -5,16 +5,16 @@ import java.util.List;
 public class QueryVo<T> {
 
 
-    private int page;
+    private int total;
 
     private List<T> tList;
 
-    public int getPage() {
-        return page;
+    public int getTotal() {
+        return total;
     }
 
-    public void setPage(int page) {
-        this.page = page;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public List<T> gettList() {
