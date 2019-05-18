@@ -7,7 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
-public interface UnqualifyApplyMapper {
+public interface UnQualifyApplyMapper {
 /*    *//**
      * 查询全部
      * @return 查询到的列表
