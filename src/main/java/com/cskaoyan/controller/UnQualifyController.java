@@ -1,11 +1,14 @@
 package com.cskaoyan.controller;
 
+import com.cskaoyan.bean.QualityManageVo;
 import com.cskaoyan.bean.UnqualifyApply;
 import com.cskaoyan.service.UnQualifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,17 +24,41 @@ public class UnQualifyController {
     UnQualifyService unQualifyService;
 
     /**
-     * 查询不合格申请记录
+     * 不合格品申请查询分发
+
+    @RequestMapping("/find")
+    @ResponseBody
+    String qualityManage(@RequestParam String _){
+        String view = null;
+        switch (_) {
+            case "1558148738957":
+                view = "forword:/unqualify/list";
+                break;
+        }
+
+        return view;
+    }*/
+    /**
+     * 分页查询不合格申请记录
+     *
      * @return
      */
-    @RequestMapping("/find")
-    public @ResponseBody List<UnqualifyApply> findUnqualify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<UnqualifyApply> unqualifyList = unQualifyService.findAll();
-        return unqualifyList;
+    @RequestMapping("/list")
+    public @ResponseBody
+    QualityManageVo findPartUnqualify(HttpServletRequest request, HttpServletResponse response,
+                                  @RequestParam int page, @RequestParam int rows)
+            throws ServletException, IOException {
+        QualityManageVo qualityManageVo = new QualityManageVo();
+        List<UnqualifyApply> unqualifyList = unQualifyService.findAll(page,rows);
+        qualityManageVo.setRows(unqualifyList);
+        qualityManageVo.setTotal(unqualifyList == null ? 0 : unqualifyList.size());
+        System.out.println(qualityManageVo);
+        return qualityManageVo;
     }
 
     /**
      * 添加不合格申请记录
+     *
      * @return
      */
     @RequestMapping("/add_batch")
@@ -42,6 +69,7 @@ public class UnQualifyController {
 
     /**
      * 编辑不合格申请记录
+     *
      * @return
      */
     @RequestMapping("/edit_batch")
@@ -52,6 +80,7 @@ public class UnQualifyController {
 
     /**
      * 删除不合格申请记录
+     *
      * @return
      */
     @RequestMapping("/delete_batch")
