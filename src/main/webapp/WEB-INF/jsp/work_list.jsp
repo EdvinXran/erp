@@ -228,7 +228,7 @@ function doSearch_work(value,name){ //用户输入用户名,点击搜素,触发�
 				{field : 'workId', width : 100, title : '作业编号', align:'center'},
 				{field : 'processNumber', width : 100, align : 'center', title : '工序号'},
 				{field : 'product', width : 100, align : 'center', title : '产品', formatter:formatWorkProduct},
-				{field : 'process', width : 100, title : '工序', align:'center', formatter:formatWorkProcess},
+				{field : 'Process', width : 100, title : '工序', align:'center', formatter:formatWorkProcess},
 				{field : 'device', width : 100, title : '设备', align:'center',formatter:formatWorkDevice},
 				{field : 'rating', width : 100, title : '班产定额', align:'center'}
 	        ] ],
@@ -243,7 +243,7 @@ function doSearch_work(value,name){ //用户输入用户名,点击搜素,触发�
 				{field : 'workId', width : 100, title : '作业编号', align:'center'},
 				{field : 'processNumber', width : 100, align : 'center', title : '工序号'},
 				{field : 'product', width : 100, align : 'center', title : '产品', formatter:formatWorkProduct},
-				{field : 'process', width : 100, title : '工序', align:'center', formatter:formatWorkProcess},
+				{field : 'Process', width : 100, title : '工序', align:'center', formatter:formatWorkProcess},
 				{field : 'device', width : 100, title : '设备', align:'center',formatter:formatWorkDevice},
 				{field : 'rating', width : 100, title : '班产定额', align:'center'}
 	        ] ],  
@@ -373,7 +373,7 @@ function doSearch_work(value,name){ //用户输入用户名,点击搜素,触发�
 		
 		$("#workProcessInfo").dialog({
 			onOpen :function(){
-				$.get("process/get/"+row.process.processId,'',function(data){
+				$.get("Process/get/"+row.process.processId,'',function(data){
 		    		//回显数据
 		    		$("#workProcessForm").form("load", data);
 		    	});
@@ -383,7 +383,7 @@ function doSearch_work(value,name){ //用户输入用户名,点击搜素,触发�
 	
 	function submitWorkProcessForm(){
 		//此处写工序信息
-		$.get("process/edit_judge",'',function(data){
+		$.get("Process/edit_judge",'',function(data){
 			if(data.msg != null){
 				$.messager.alert('提示', data.msg);
 			}else{
@@ -392,7 +392,7 @@ function doSearch_work(value,name){ //用户输入用户名,点击搜素,触发�
 					return ;
 				}
 				//此处写工序信息
-				$.post("process/update_all",$("#workProcessForm").serialize(), function(data){
+				$.post("Process/update_all",$("#workProcessForm").serialize(), function(data){
 					if(data.status == 200){
 						$.messager.alert('提示','修改工序成功!','info',function(){
 							$("#workProcessInfo").dialog("close");

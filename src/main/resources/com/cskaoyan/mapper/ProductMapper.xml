@@ -24,4 +24,11 @@
         status
         from product
     </select>
+
+
+    <select id="queryProductNum" resultType="_int">
+        select
+        count(1)
+        from product
+    </select>
 </mapper>

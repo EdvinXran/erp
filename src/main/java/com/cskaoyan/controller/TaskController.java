@@ -1,33 +1,33 @@
 package com.cskaoyan.controller;
 
-import com.cskaoyan.bean.Order;
+
 import com.cskaoyan.bean.QueryVo;
-import com.cskaoyan.service.OrderService;
-import com.github.pagehelper.Page;
+import com.cskaoyan.bean.Task;
+import com.cskaoyan.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 @Controller
-@RequestMapping("order")
-public class OrderController {
+@RequestMapping("task")
+public class TaskController {
 
     @Autowired
-    OrderService orderService;
+    TaskService taskService;
+
 
     @RequestMapping("find")
-    public String getOrders() {
-
-        return "order_list";
+    public String find() {
+        return "task_list";
     }
 
     @ResponseBody
     @RequestMapping("list")
-    public QueryVo<Order> list(int page, int rows) {
+    public QueryVo<Task> list(int page, int rows) {
 
-        QueryVo<Order> taskQueryVo = orderService.queryOrder(page, rows);
+        QueryVo<Task> taskQueryVo = taskService.queryTask(page, rows);
         return taskQueryVo;
     }
+
 }

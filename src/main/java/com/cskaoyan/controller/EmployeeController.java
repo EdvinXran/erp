@@ -32,8 +32,8 @@ public class EmployeeController {
     public QueryVo employeeList() {
         List<Employee>employeeList= employeeService.selectAllEmployee();
         QueryVo queryVo = new QueryVo();
-        queryVo.settList(employeeList);
-        queryVo.setPage(employeeList.size());
+        queryVo.setRows(employeeList);
+        queryVo.setTotal(employeeList.size());
         return queryVo;
     }
 

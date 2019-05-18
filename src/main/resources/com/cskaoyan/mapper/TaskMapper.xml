@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cskaoyan.mapper.TaskMapper">
+
+
+    <resultMap id="taskMap" type="task">
+        <result property="taskId" column="task_id"/>
+        <result property="manufactureSn" column="t_manufacture_sn"/>
+        <result property="workId" column="t_work_id"/>
+        <result property="taskQuantity" column="task_quantity"/>
+        <result property="workingHours" column="working_hours"/>
+        <association property="work" javaType="work">
+            <result property="workId" column="work_id"/>
+        </association>
+        <association property="manufacture" javaType="manufacture">
+            <result property="manufactureSn" column="manufacture_sn"/>
+        </association>
+    </resultMap>
+
+    <select id="queryTask" resultMap="taskMap">
+        select
+        task_id,
+        t.manufacture_sn t_manufacture_sn,
+        t.work_id t_work_id,
+        task_quantity,
+        working_hours,
+        w.work_id,
+        m.manufacture_sn
+        from task t
+        left join manufacture m on t.manufacture_sn = m.manufacture_sn
+        left join work w on w.work_id = t.work_id
+        limit #{page}, #{rows}
+    </select>
+    
+    <select id="queryTaskNum" resultType="_int">
+        select
+        count(1)
+        from task
+    </select>
+</mapper>

@@ -2,7 +2,7 @@ package com.cskaoyan.bean;
 
 public class Work {
 
-    private String wordId;
+    private String workId;
     private String processNumber;
     private String productId;
     private String processId;
@@ -13,12 +13,12 @@ public class Work {
     private Device device;
 
 
-    public String getWordId() {
-        return wordId;
+    public String getWorkId() {
+        return workId;
     }
 
-    public void setWordId(String wordId) {
-        this.wordId = wordId;
+    public void setWorkId(String workId) {
+        this.workId = workId;
     }
 
     public String getProcessNumber() {
