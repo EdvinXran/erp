@@ -2,9 +2,8 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.FinalMeasuretCheck;
 import com.cskaoyan.bean.FinalMeasuretCheckExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FinalMeasuretCheckMapper {
     long countByExample(FinalMeasuretCheckExample example);

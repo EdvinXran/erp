@@ -2,18 +2,10 @@ package com.cskaoyan.mapper;
 
 import com.cskaoyan.bean.UnqualifyApply;
 import com.cskaoyan.bean.UnqualifyApplyExample;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.RowBounds;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-public interface UnQualifyApplyMapper {
-/*    *//**
-     * 查询全部
-     * @return 查询到的列表
-     *//*
-    List<UnqualifyApply> findAll();*/
-
+public interface UnqualifyApplyMapper {
     long countByExample(UnqualifyApplyExample example);
 
     int deleteByExample(UnqualifyApplyExample example);
