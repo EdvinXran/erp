@@ -1,6 +1,6 @@
 package com.cskaoyan.bean;
 
-public class Deoartment {
+public class Department {
     private String departmentId;
 
     private String departmentName;
