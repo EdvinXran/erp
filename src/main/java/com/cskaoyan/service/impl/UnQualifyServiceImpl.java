@@ -21,6 +21,7 @@ public class UnQualifyServiceImpl implements UnQualifyService {
      */
     public List<UnqualifyApply> findAll(){
         UnqualifyApplyExample uqae = new UnqualifyApplyExample();
+       // PageHelper.startPage(page, rows);
         List<UnqualifyApply> applyList = unqualifyApplyMapper.selectByExample(uqae);
         return applyList;
     }

@@ -1,9 +1,5 @@
 package com.cskaoyan.bean;
 
-/**
- * Created by VAP
- * Date 2019/5/17  Time 15:02
- */
 public class Material {
     private String materialId;
 
@@ -15,26 +11,12 @@ public class Material {
 
     private String note;
 
-    public Material() {
-    }
-
-    @Override
-    public String toString() {
-        return "Material{" +
-                "materialId='" + materialId + '\'' +
-                ", materialType='" + materialType + '\'' +
-                ", status='" + status + '\'' +
-                ", remaining=" + remaining +
-                ", note='" + note + '\'' +
-                '}';
-    }
-
     public String getMaterialId() {
         return materialId;
     }
 
     public void setMaterialId(String materialId) {
-        this.materialId = materialId;
+        this.materialId = materialId == null ? null : materialId.trim();
     }
 
     public String getMaterialType() {
@@ -42,7 +24,7 @@ public class Material {
     }
 
     public void setMaterialType(String materialType) {
-        this.materialType = materialType;
+        this.materialType = materialType == null ? null : materialType.trim();
     }
 
     public String getStatus() {
@@ -50,7 +32,7 @@ public class Material {
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = status == null ? null : status.trim();
     }
 
     public Integer getRemaining() {
@@ -66,14 +48,6 @@ public class Material {
     }
 
     public void setNote(String note) {
-        this.note = note;
-    }
-
-    public Material(String materialId, String materialType, String status, Integer remaining, String note) {
-        this.materialId = materialId;
-        this.materialType = materialType;
-        this.status = status;
-        this.remaining = remaining;
-        this.note = note;
+        this.note = note == null ? null : note.trim();
     }
 }

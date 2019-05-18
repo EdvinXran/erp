@@ -2,9 +2,6 @@ package com.cskaoyan.bean;
 
 import java.util.Date;
 
-/**
- * 工序计量质检类
- */
 public class ProcessMeasureCheck {
     private String pMeasureCheckId;
 

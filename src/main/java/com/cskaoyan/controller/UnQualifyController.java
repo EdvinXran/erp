@@ -1,10 +1,12 @@
 package com.cskaoyan.controller;
 
+import com.cskaoyan.bean.QualityManageVo;
 import com.cskaoyan.bean.UnqualifyApply;
 import com.cskaoyan.service.UnQualifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
@@ -21,17 +23,31 @@ public class UnQualifyController {
     UnQualifyService unQualifyService;
 
     /**
-     * 查询不合格申请记录
-     * @return
+     * 不合格品申请查询分发
      */
     @RequestMapping("/find")
-    public @ResponseBody List<UnqualifyApply> findUnqualify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String qualityManage(){
+        return "unqualify_list";
+    }
+    /**
+     * 分页查询不合格申请记录
+     *
+     * @return
+     */
+    @RequestMapping("/list")
+    public @ResponseBody
+    QualityManageVo findPartUnqualify(@RequestParam int page, @RequestParam int rows) {
+        QualityManageVo qualityManageVo = new QualityManageVo();
         List<UnqualifyApply> unqualifyList = unQualifyService.findAll();
-        return unqualifyList;
+        qualityManageVo.setRows(unqualifyList);
+        qualityManageVo.setTotal(unqualifyList == null ? 0 : unqualifyList.size());
+        System.out.println(qualityManageVo);
+        return qualityManageVo;
     }
 
     /**
      * 添加不合格申请记录
+     *
      * @return
      */
     @RequestMapping("/add_batch")
@@ -42,6 +58,7 @@ public class UnQualifyController {
 
     /**
      * 编辑不合格申请记录
+     *
      * @return
      */
     @RequestMapping("/edit_batch")
@@ -52,6 +69,7 @@ public class UnQualifyController {
 
     /**
      * 删除不合格申请记录
+     *
      * @return
      */
     @RequestMapping("/delete_batch")

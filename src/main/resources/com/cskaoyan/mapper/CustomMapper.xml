@@ -29,6 +29,5 @@
         status,
         note
         from custom
-        limit #{page}, #{rows}
     </select>
 </mapper>

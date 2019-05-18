@@ -1,35 +1,34 @@
 package com.cskaoyan.controller;
 
-import com.cskaoyan.bean.Custom;
-import com.cskaoyan.service.CustomService;
+import com.cskaoyan.bean.Product;
+import com.cskaoyan.service.ProductService;
 import com.github.pagehelper.Page;
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 @Controller
-@RequestMapping("custom")
-public class CustomController {
+@RequestMapping("product")
+public class ProductController {
 
     @Autowired
-    CustomService customService;
+    ProductService productService;
+
 
     @RequestMapping("find")
     public String find() {
 
-        return "custom_list";
+        return "product_list";
     }
 
     @ResponseBody
     @RequestMapping("list")
-    public Page<Custom> customList(int page, int rows) {
+    public Page<Product> list(int page, int rows) {
 
-        Page<Custom> customs = customService.queryCustom(page, rows);
+        Page<Product> products = productService.queryProduct(page, rows);
+        return products;
 
-        return customs;
     }
+
 }

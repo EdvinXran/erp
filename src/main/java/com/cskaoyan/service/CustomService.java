@@ -1,10 +1,11 @@
 package com.cskaoyan.service;
 
 import com.cskaoyan.bean.Custom;
+import com.github.pagehelper.Page;
 
 import java.util.List;
 
 public interface CustomService {
 
-    List<Custom> queryCustomService(String page, String rows);
+    Page<Custom> queryCustom(int page, int rows);
 }
