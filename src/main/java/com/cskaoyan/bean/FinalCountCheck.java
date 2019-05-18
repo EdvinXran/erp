@@ -3,9 +3,6 @@ package com.cskaoyan.bean;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * 成品计数质检类
- */
 public class FinalCountCheck {
     private String fCountCheckId;
 

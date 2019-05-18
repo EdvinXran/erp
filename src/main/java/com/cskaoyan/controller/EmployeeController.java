@@ -2,6 +2,7 @@ package com.cskaoyan.controller;
 
 
 import com.cskaoyan.bean.Employee;
+import com.cskaoyan.bean.QueryVo;
 import com.cskaoyan.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,17 +29,19 @@ public class EmployeeController {
 
     @ResponseBody
     @RequestMapping("list")
-    public List<Employee> employeeList(String page, String rows) {
-
+    public QueryVo employeeList() {
         List<Employee>employeeList= employeeService.selectAllEmployee();
-        return employeeList;
+        QueryVo queryVo = new QueryVo();
+        queryVo.settList(employeeList);
+        queryVo.setPage(employeeList.size());
+        return queryVo;
     }
 
-    @RequestMapping("add")
+    @RequestMapping("add_judge")
     public String add(){
         return "employee_add";
     }
-    @RequestMapping("add_judge")
+    @RequestMapping("add")
     @ResponseBody
     public Employee add_judge(@RequestBody Employee employee){
         boolean i = employeeService.selectEmployee(employee.getEmpId(),employee.getEmpName());

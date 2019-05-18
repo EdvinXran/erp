@@ -8,7 +8,6 @@
     <result column="remaining" jdbcType="INTEGER" property="remaining" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
-
   <sql id="Base_Column_List">
     material_id, material_type, status, remaining, note
   </sql>
@@ -180,8 +179,4 @@
       note = #{note,jdbcType=VARCHAR}
     where material_id = #{materialId,jdbcType=VARCHAR}
   </update>
-
-  <select id="queryMaterial" resultMap="materialMap">
-    select material_id,material_type,status,remaining,note from material
-  </select>
 </mapper>
