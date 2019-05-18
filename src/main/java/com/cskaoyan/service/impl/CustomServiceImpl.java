@@ -3,6 +3,8 @@ package com.cskaoyan.service.impl;
 import com.cskaoyan.bean.Custom;
 import com.cskaoyan.mapper.CustomMapper;
 import com.cskaoyan.service.CustomService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +17,12 @@ public class CustomServiceImpl implements CustomService {
     CustomMapper customMapper;
 
     @Override
-    public List<Custom> queryCustomService(String page, String rows) {
+    public Page<Custom> queryCustom(int page, int rows) {
 
-        int rowsInt = Integer.parseInt(rows);
-        int pageInt = (Integer.parseInt(page) - 1) * rowsInt;
+        PageHelper.startPage(page, rows);
+        List<Custom> customs = customMapper.queryCustom();
+        Page<Custom> customsPage = (Page<Custom>) customs;
 
-        List<Custom> customs = customMapper.queryCustom(pageInt, rowsInt);
-        return customs;
+        return customsPage;
     }
 }

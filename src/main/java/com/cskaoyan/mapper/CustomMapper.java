@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CustomMapper {
 
-    List<Custom> queryCustom(@Param("page") int page, @Param("rows") int rows);
+    List<Custom> queryCustom();
  }

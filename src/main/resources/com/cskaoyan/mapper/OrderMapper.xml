@@ -5,7 +5,7 @@
 
 <mapper namespace="com.cskaoyan.mapper.OrderMapper">
 
-    <resultMap id="orderMap" type="Order">
+    <resultMap id="orderMap" type="order">
         <result property="orderId" column="order_id"/>
         <result property="customId" column="o_custom_id"/>
         <result property="productId" column="o_product_id"/>
@@ -71,6 +71,6 @@
         p.note p_note,
         p.status p_status
         from c_order o left join custom c on o.custom_id = c.custom_id
-        left join product p on o.product_id = p.product_id;
+        left join product p on o.product_id = p.product_id
     </select>
 </mapper>
