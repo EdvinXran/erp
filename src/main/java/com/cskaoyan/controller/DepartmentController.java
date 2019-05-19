@@ -4,7 +4,6 @@ package com.cskaoyan.controller;
 import com.cskaoyan.bean.CodeType;
 import com.cskaoyan.bean.Department;
 import com.cskaoyan.service.DepartmentService;
-import com.sun.tools.javac.jvm.Code;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
