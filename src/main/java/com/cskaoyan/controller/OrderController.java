@@ -1,6 +1,7 @@
 package com.cskaoyan.controller;
 
 import com.cskaoyan.bean.Order;
+import com.cskaoyan.bean.QueryVo;
 import com.cskaoyan.service.OrderService;
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class OrderController {
 
     @ResponseBody
     @RequestMapping("list")
-    public Page<Order> orderList(int page, int rows) {
+    public QueryVo<Order> list(int page, int rows) {
 
-        Page<Order> orders = orderService.getOrders(page, rows);
-        return orders;
+        QueryVo<Order> taskQueryVo = orderService.queryOrder(page, rows);
+        return taskQueryVo;
     }
 }

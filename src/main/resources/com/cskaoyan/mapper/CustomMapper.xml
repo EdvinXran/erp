@@ -29,5 +29,13 @@
         status,
         note
         from custom
+        limit #{page}, #{rows}
+    </select>
+
+
+    <select id="queryCustomNum" resultType="_int">
+        select
+        count(1)
+        from custom
     </select>
 </mapper>

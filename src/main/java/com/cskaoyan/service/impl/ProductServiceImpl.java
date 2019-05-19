@@ -1,6 +1,7 @@
 package com.cskaoyan.service.impl;
 
 import com.cskaoyan.bean.Product;
+import com.cskaoyan.bean.QueryVo;
 import com.cskaoyan.mapper.ProductMapper;
 import com.cskaoyan.service.ProductService;
 import com.github.pagehelper.Page;
@@ -17,11 +18,13 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
 
     @Override
-    public Page<Product> queryProduct(int page, int rows) {
+    public QueryVo<Product> queryProduct(int page, int rows) {
 
-        PageHelper.startPage(page, rows);
-        List<Product> products = productMapper.queryProduct();
-
-        return (Page<Product>)products;
+        List<Product> products = productMapper.queryProduct((page - 1) * rows, rows);
+        int total = productMapper.queryProductNum();
+        QueryVo<Product> productQueryVo = new QueryVo<>();
+        productQueryVo.setRows(products);
+        productQueryVo.setTotal(total);
+        return productQueryVo;
     }
 }

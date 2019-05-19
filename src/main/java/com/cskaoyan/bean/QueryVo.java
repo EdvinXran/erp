@@ -5,23 +5,23 @@ import java.util.List;
 public class QueryVo<T> {
 
 
-    private int page;
+    private int total;
 
-    private List<T> tList;
+    private List<T> rows;
 
-    public int getPage() {
-        return page;
+    public int getTotal() {
+        return total;
     }
 
-    public void setPage(int page) {
-        this.page = page;
+    public void setTotal(int total) {
+        this.total = total;
     }
 
-    public List<T> gettList() {
-        return tList;
+    public List<T> getRows() {
+        return rows;
     }
 
-    public void settList(List<T> tList) {
-        this.tList = tList;
+    public void setRows(List<T> rows) {
+        this.rows = rows;
     }
 }

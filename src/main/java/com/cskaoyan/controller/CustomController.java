@@ -1,6 +1,7 @@
 package com.cskaoyan.controller;
 
 import com.cskaoyan.bean.Custom;
+import com.cskaoyan.bean.QueryVo;
 import com.cskaoyan.service.CustomService;
 import com.github.pagehelper.Page;
 import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
@@ -26,9 +27,9 @@ public class CustomController {
 
     @ResponseBody
     @RequestMapping("list")
-    public Page<Custom> customList(int page, int rows) {
+    public QueryVo<Custom> customList(int page, int rows) {
 
-        Page<Custom> customs = customService.queryCustom(page, rows);
+        QueryVo<Custom> customs = customService.queryCustom(page, rows);
 
         return customs;
     }

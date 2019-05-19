@@ -271,7 +271,7 @@ function doSearch_pMeasureCheck(value,name){ //用户输入用户名,点击搜�
 		var row = onP2PClickRow(index);
 		$("#p2pMeasureInfo").dialog({
     		onOpen :function(){
-    			$.get("process/get/"+row.processId,'',function(data){
+    			$.get("Process/get/"+row.processId,'',function(data){
 		    		//回显数据
 		    		$("#p2pEditForm").form("load", data);
     	    	});
@@ -289,7 +289,7 @@ function doSearch_pMeasureCheck(value,name){ //用户输入用户名,点击搜�
 	
 	function submitP2PEditForm(){
 		//此处写工序信息
-		$.get("process/edit_judge",'',function(data){
+		$.get("Process/edit_judge",'',function(data){
     		if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{
@@ -298,7 +298,7 @@ function doSearch_pMeasureCheck(value,name){ //用户输入用户名,点击搜�
     				return ;
     			}
     			//此处写工序信息
-    			$.post("process/update_all",$("#p2pEditForm").serialize(), function(data){
+    			$.post("Process/update_all",$("#p2pEditForm").serialize(), function(data){
     				if(data.status == 200){
     					$.messager.alert('提示','修改产品成功!','info',function(){
     						$("#p2pMeasureInfo").dialog("close");

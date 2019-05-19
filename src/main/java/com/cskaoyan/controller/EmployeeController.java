@@ -26,6 +26,7 @@ public class EmployeeController {
     }
     //首页list
     @ResponseBody
+<<<<<<< HEAD
     @RequestMapping("employee/list")
     public EmployeeVo employeeList() {
         List<Employee>employeeList=employeeService.selectAllEmployee();
@@ -33,6 +34,15 @@ public class EmployeeController {
         employeeVo.setRows(employeeList);
         employeeVo.setTotal(employeeList.size());
         return employeeVo;
+=======
+    @RequestMapping("list")
+    public QueryVo employeeList() {
+        List<Employee>employeeList= employeeService.selectAllEmployee();
+        QueryVo queryVo = new QueryVo();
+        queryVo.setRows(employeeList);
+        queryVo.setTotal(employeeList.size());
+        return queryVo;
+>>>>>>> ccb2251885d4a29e7eedb19779eed3a71f9dd3ce
     }
     //添加add
     @RequestMapping("employee/add")
