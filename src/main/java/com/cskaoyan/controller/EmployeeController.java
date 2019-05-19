@@ -1,73 +1,119 @@
 package com.cskaoyan.controller;
 
 
+import com.cskaoyan.bean.CodeType;
 import com.cskaoyan.bean.Employee;
-import com.cskaoyan.bean.QueryVo;
+import com.cskaoyan.bean.EmployeeVo;
 import com.cskaoyan.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("employee")
+//@RequestMapping("employee")
 public class EmployeeController {
 
     @Autowired
     EmployeeService employeeService;
 
-
-    @RequestMapping("find")
+    //首页find
+    @RequestMapping("employee/find")
     public String getOrders() {
-
         return "employee_list";
     }
-
+    //首页list
     @ResponseBody
-    @RequestMapping("list")
-    public QueryVo employeeList() {
-        List<Employee>employeeList= employeeService.selectAllEmployee();
-        QueryVo queryVo = new QueryVo();
-        queryVo.settList(employeeList);
-        queryVo.setPage(employeeList.size());
-        return queryVo;
+    @RequestMapping("employee/list")
+    public EmployeeVo employeeList() {
+        List<Employee>employeeList=employeeService.selectAllEmployee();
+        EmployeeVo employeeVo = new EmployeeVo();
+        employeeVo.setRows(employeeList);
+        employeeVo.setTotal(employeeList.size());
+        return employeeVo;
     }
-
-    @RequestMapping("add_judge")
+    //添加add
+    @RequestMapping("employee/add")
     public String add(){
         return "employee_add";
     }
-    @RequestMapping("add")
+    //添加add_judge
+    @RequestMapping("employee/add_judge")
     @ResponseBody
-    public Employee add_judge(@RequestBody Employee employee){
-        boolean i = employeeService.selectEmployee(employee.getEmpId(),employee.getEmpName());
-        if(!i){
+    public String addjudge(){
+        return "employee_add";
+    }
+    //新增insert
+    @RequestMapping("employee/insert")
+    @ResponseBody
+    public CodeType insertEmployee(Employee employee,String departmentId){
+        int i = employeeService.insertEmpl(employee,departmentId);
+        CodeType codeType = new CodeType();
+        if(i == 1){
+            codeType.setMsg("OK");
+            codeType.setStatus("200");
+            codeType.setData(null);
+
+        }else{
+            codeType.setMsg("NO");
+            codeType.setStatus("500");
+            codeType.setData("添加失败");
 
         }
-        return employee;
+        return codeType;
     }
-    @RequestMapping("edit")
+    //修改edit
+    @RequestMapping("employee/edit")
     public String edit(){
         return "employee_edit";
     }
-    @RequestMapping("edit_judge")
+    //修改edit_judge
+    @RequestMapping("employee/edit_judge")
     @ResponseBody
-    public Employee edit_judge(@RequestBody Employee employee){
-        int i = employeeService.updateEmployeeById(employee);
-        if(i == 1){
-            return employee;
-        }
-        return employee;
-    }
-//    @RequestMapping("delete_batch")
-//    public
-    @RequestMapping("delete_judge")
-    public String deleted(Model model,Employee employee){
-        employeeService.deletedEmployeeById(employee.getEmpId());
+    public String edit_judge(){
         return "";
     }
+    @RequestMapping("employee/update_all")
+    @ResponseBody
+    public CodeType updateEmpl(Employee employee,String departmentId){
+        int i = employeeService.updateEmployeeById(employee,departmentId);
+        CodeType codeType = new CodeType();
+        if(i == 1){
+            codeType.setMsg("OK");
+            codeType.setStatus("200");
+            codeType.setData(null);
+        }else{
+            codeType.setMsg("NO");
+            codeType.setStatus("500");
+            codeType.setData("修改失败");
+        }
+        return codeType;
+    }
+    //删除delete
+    @RequestMapping("employee/delete_judge")
+    @ResponseBody
+    public String deleted(){
+        return "";
+    }
+    @RequestMapping("employee/delete_batch")
+    @ResponseBody
+    public CodeType deleted(String[] ids){
+        int i = employeeService.deleted(ids);
+        CodeType codeType = new CodeType();
+        if(i == 1){
+            codeType.setMsg("OK");
+            codeType.setStatus("200");
+            codeType.setData(null);
+        }else{
+            codeType.setMsg("NO");
+            codeType.setStatus("500");
+            codeType.setData("删除失败");
+        }
+        return codeType;
+    }
+    //模糊查询
+
+
 }

@@ -28,6 +28,14 @@ public interface DepartmentMapper {
     int updateByPrimaryKeySelective(Department record);
 
     int updateByPrimaryKey(Department record);
-
+    //getdata的list集合
     List<Department> selectByDepartment();
+    //新增部门
+    int indertDepartment(Department department);
+    //修改部门
+    int updatebyDepartmentId(@Param("department") Department department,@Param("id") String departmentId);
+    //删除部门
+    int deleteDepartmentByIds(@Param("ids")String[] ids);
+    //修改note
+    int updateNoteByDepartmentd(@Param("note")String note,@Param("id") String departmentId);
 }

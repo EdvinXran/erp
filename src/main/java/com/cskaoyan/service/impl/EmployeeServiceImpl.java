@@ -14,33 +14,27 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     EmployeeMapper employeeMapper;
 
-
     @Override
-    public int insertEmpl(Employee employee) {
-        int i = employeeMapper.insert(employee);
+    public int insertEmpl(Employee employee,String departmentId) {
+        int i = employeeMapper.insertemployee(employee,departmentId);
         return i;
     }
-
     @Override
     public List<Employee> selectAllEmployee() {
         return employeeMapper.selectAllEmployee();
     }
 
     @Override
-    public boolean selectEmployee(String empId, String empName) {
-        return employeeMapper.selectEmployeeByEmpidAndEmpName(empId,empName) != null;
-    }
-
-    @Override
-    public int updateEmployeeById(Employee employee) {
-        int i = employeeMapper.updateByPrimaryKey(employee);
+    public int updateEmployeeById(Employee employee,String departmentId) {
+        int i = employeeMapper.updateEmployeeById(employee,departmentId);
         return i;
     }
 
     @Override
-    public int deletedEmployeeById(String empId) {
-        int i = employeeMapper.deleteByPrimaryKey(empId);
+    public int deleted(String[] ids) {
+        int i = employeeMapper.deletedEmployeeByIds(ids);
         return i;
     }
+
 
 }

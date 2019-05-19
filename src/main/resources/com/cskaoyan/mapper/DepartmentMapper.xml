@@ -178,4 +178,37 @@
       note = #{note,jdbcType=VARCHAR}
     where department_id = #{departmentId,jdbcType=VARCHAR}
   </update>
+  <resultMap id="departmentMap" type="department">
+    <result column="department_id" property="departmentId" />
+    <result column="department_name" property="departmentName" />
+    <result column="note" property="note" />
+  </resultMap>
+  <select id="selectByDepartment" resultMap="departmentMap">
+    select department_id,department_name,note from department
+  </select>
+  <insert id="indertDepartment" parameterType="department">
+    insert into department (department_id, department_name, note
+      )
+    values (#{departmentId}, #{departmentName}, #{note}
+      )
+  </insert>
+  <update id="updatebyDepartmentId" parameterType="department">
+    update department set
+    department_name = #{department.departmentName},
+    note = #{department.note}
+    where department_id =#{id};
+  </update>
+  <delete id="deleteDepartmentByIds" parameterType="string">
+    delete from department
+    <where>
+      <foreach collection="ids" open="(" close=")" separator="," item="id">
+        department_id = #{id}
+      </foreach>
+    </where>
+  </delete>
+  <update id="updateNoteByDepartmentd" parameterType="department">
+    update department set
+    note = #{note}
+    where department_id =#{id};
+  </update>
 </mapper>

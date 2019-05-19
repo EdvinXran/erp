@@ -1,6 +1,7 @@
 package com.cskaoyan.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class Employee {
     private String empId;
@@ -11,9 +12,9 @@ public class Employee {
 
     private String idCode;
 
-    private Date birthday;
+    private String birthday;
 
-    private Date joinDate;
+    private String joinDate;
 
     private String status;
 
@@ -27,10 +28,13 @@ public class Employee {
 
     private String educationForm;
 
-    private String departmentId;
+    private Department department;
 
     public String getEmpId() {
         return empId;
+    }
+
+    public Employee() {
     }
 
     public void setEmpId(String empId) {
@@ -61,19 +65,19 @@ public class Employee {
         this.idCode = idCode == null ? null : idCode.trim();
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public Date getJoinDate() {
+    public String getJoinDate() {
         return joinDate;
     }
 
-    public void setJoinDate(Date joinDate) {
+    public void setJoinDate(String joinDate) {
         this.joinDate = joinDate;
     }
 
@@ -125,11 +129,11 @@ public class Employee {
         this.educationForm = educationForm == null ? null : educationForm.trim();
     }
 
-    public String getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId == null ? null : departmentId.trim();
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

@@ -1,18 +1,17 @@
 package com.cskaoyan.service;
 
 import com.cskaoyan.bean.Employee;
-import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 
 public interface EmployeeService {
-    int insertEmpl(@Param("employee") Employee employee);
+    int insertEmpl(Employee employee,String departmentId);
 
     List<Employee> selectAllEmployee();
 
-    boolean selectEmployee(String empId, String empName);
+    int updateEmployeeById(Employee employee,String departmentId);
 
-    int updateEmployeeById(Employee employee);
 
-    int deletedEmployeeById(String empId);
+    int deleted(String[] ids);
 }
